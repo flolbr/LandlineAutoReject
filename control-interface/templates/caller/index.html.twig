@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello {{ controller_name }}!{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+<div class="example-wrapper">
+    <h1>Callers list</h1>
+
+    <table>
+        <thead>
+        <tr>
+            <th>Number</th>
+            <th>Status</th>
+            <th>Last call</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for caller in callers %}
+            <tr>
+                <td>{{ caller.number }}</td>
+                <td>{{ caller.blocked ? "Blocked" : "Allowed" }}</td>
+                <td>00</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    {#{{ dump(times) }}#}
+    
+    <h2>Add caller</h2>
+    <form action="{{ path('caller_add') }}" method="post">
+        <label for="input_number">Number</label>
+        <input type="text" name="caller[number]" id="input_number">
+        <br>
+        <label for="input_reject">Reject ?</label>
+        <input type="checkbox" name="caller[reject]" id="input_reject" checked="checked">
+        <br>
+        <input type="submit" value="Send">
+    </form>
+</div>
+{% endblock %}

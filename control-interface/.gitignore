@@ -197,3 +197,4 @@ $RECYCLE.BIN/
 # Embedded web-server pid file
 #/.web-server-pid
 
+/var/cache/
